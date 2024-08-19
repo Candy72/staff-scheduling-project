@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { API } from '@aws-amplify/api'; // Updated import for API
-import { graphqlOperation } from '@aws-amplify/api-graphql'; // Updated import for graphqlOperation
+import { API, graphqlOperation, Auth } from 'aws-amplify'; // Added Auth import
 import '../styles/global.css'; // Import global CSS
 import { listSubjects } from '../graphql/queries';
 import { createSubject, updateSubject, deleteSubject } from '../graphql/mutations';

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { API } from '@aws-amplify/api'; // Updated import for API
-import { graphqlOperation } from '@aws-amplify/api-graphql'; // Updated import for graphqlOperation
-import '../styles/global.css'; // Import global CSS
+import { Auth, API, graphqlOperation } from 'aws-amplify'; // Corrected import
+import '../styles/global.css';
+import { listReports } from '../graphql/queries';
+import { createReport, updateReport, deleteReport } from '../graphql/mutations';
 
 const Reports = () => {
     const [reports, setReports] = useState([]);

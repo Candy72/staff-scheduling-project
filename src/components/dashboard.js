@@ -1,10 +1,8 @@
-import React, { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Auth } from '@aws-amplify/auth'; // Updated import for Auth
-import '../styles/global.css'; // Import global CSS
-
-
-
+import React, { useState, useEffect } from 'react';
+import { Auth } from 'aws-amplify';
+import { API } from '@aws-amplify/api';
+import { graphqlOperation } from '@aws-amplify/api-graphql';
+import '../styles/global.css';
 
 const Dashboard = () => {
     const navigate = useNavigate(); // useNavigate replaces useHistory in react-router-dom v6+

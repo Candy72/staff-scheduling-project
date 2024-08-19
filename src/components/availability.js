@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Auth } from '@aws-amplify/auth'; // Updated import for Auth
-import { API } from '@aws-amplify/api'; // Updated import for API
+import { API, graphqlOperation, Auth } from 'aws-amplify'; // Corrected import
 import '../styles/global.css'; // Import global CSS
-import { listAvailabilities, updateAvailability } from '../graphql/queries'; // Corrected imports
+import { listAvailabilities } from '../graphql/queries';
+import { updateAvailability } from '../graphql/mutations'; // Updated to use mutations for updating availability
 
 const Availability = () => {
     const [availability, setAvailability] = useState('');
@@ -13,10 +13,7 @@ const Availability = () => {
         const fetchAvailability = async () => {
             try {
                 const user = await Auth.currentAuthenticatedUser();
-                const response = await API.graphql({
-                    query: listAvailabilities,
-                    variables: { filter: { lecturerId: { eq: user.username } } },
-                });
+                const response = await API.graphql(graphqlOperation(listAvailabilities, { filter: { lecturerId: { eq: user.attributes.sub } } }));
                 setAvailability(response.data.listAvailabilities.items[0]?.availability || '');
             } catch (err) {
                 console.error('Error fetching availability:', err);
@@ -32,15 +29,12 @@ const Availability = () => {
     const handleSave = async () => {
         try {
             const user = await Auth.currentAuthenticatedUser();
-            await API.graphql({
-                query: updateAvailability,
-                variables: {
-                    input: {
-                        lecturerId: user.username,
-                        availability,
-                    },
+            await API.graphql(graphqlOperation(updateAvailability, {
+                input: {
+                    id: user.attributes.sub,
+                    availability,
                 },
-            });
+            }));
             alert('Availability updated successfully');
         } catch (err) {
             console.error('Error updating availability:', err);

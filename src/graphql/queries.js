@@ -238,13 +238,14 @@ export const getAvailability = /* GraphQL */ `
         maxConcurrentInstances
         createdAt
         updatedAt
+        __typename
       }
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
-
 export const listAvailabilities = /* GraphQL */ `
   query ListAvailabilities(
     $filter: ModelAvailabilityFilterInput
@@ -259,8 +260,10 @@ export const listAvailabilities = /* GraphQL */ `
         endDate
         createdAt
         updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
@@ -281,6 +284,7 @@ export const getReport = /* GraphQL */ `
         maxConcurrentInstances
         createdAt
         updatedAt
+        __typename
       }
       subject {
         id
@@ -288,13 +292,14 @@ export const getReport = /* GraphQL */ `
         difficultyLevel
         createdAt
         updatedAt
+        __typename
       }
       createdAt
       updatedAt
+      __typename
     }
   }
 `;
-
 export const listReports = /* GraphQL */ `
   query ListReports(
     $filter: ModelReportFilterInput
@@ -308,22 +313,26 @@ export const listReports = /* GraphQL */ `
         subjectId
         createdDate
         content
+        createdAt
+        updatedAt
+        __typename
       }
       nextToken
+      __typename
     }
   }
 `;
-export const subjectInstancesByIdAndStartDate = /* GraphQL */ `
-  query SubjectInstancesByIdAndStartDate(
-    $id: ID!
+export const subjectInstancesBySubjectIdAndStartDate = /* GraphQL */ `
+  query SubjectInstancesBySubjectIdAndStartDate(
+    $subjectId: ID!
     $startDate: ModelStringKeyConditionInput
     $sortDirection: ModelSortDirection
     $filter: ModelSubjectInstanceFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    subjectInstancesByIdAndStartDate(
-      id: $id
+    subjectInstancesBySubjectIdAndStartDate(
+      subjectId: $subjectId
       startDate: $startDate
       sortDirection: $sortDirection
       filter: $filter
@@ -537,19 +546,6 @@ export const reportsBySubjectIdAndCreatedDate = /* GraphQL */ `
       }
       nextToken
       __typename
-    }
-  }
-`;
-export const updateAvailability = /* GraphQL */ `
-  mutation UpdateAvailability(
-    $input: UpdateAvailabilityInput!
-    $condition: ModelAvailabilityConditionInput
-  ) {
-    updateAvailability(input: $input, condition: $condition) {
-      id
-      lecturerId
-      startDate
-      endDate
     }
   }
 `;

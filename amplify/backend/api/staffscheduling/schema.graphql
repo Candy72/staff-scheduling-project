@@ -6,24 +6,54 @@ type Lecturer @model @auth(rules: [{ allow: private }]) {
   currentWorkload: Int!
   maxConcurrentInstances: Int!
   assignedInstances: [SubjectInstance]
-    @hasMany(indexName: "byLecturer", fields: ["id"])
-  schedules: [Schedule] @hasMany(indexName: "byLecturer", fields: ["id"])
+    @hasMany(indexName: "byLecturerForSubjectInstance", fields: ["id"])
+  schedules: [Schedule]
+    @hasMany(indexName: "byLecturerForSchedule", fields: ["id"])
   availabilities: [Availability]
-    @hasMany(indexName: "byLecturer", fields: ["id"])
-  reports: [Report] @hasMany(indexName: "byLecturer", fields: ["id"])
+    @hasMany(indexName: "byLecturerForAvailability", fields: ["id"])
+  reports: [Report] @hasMany(indexName: "byLecturerForReport", fields: ["id"])
 }
 
 type Subject @model @auth(rules: [{ allow: private }]) {
   id: ID!
   name: String!
   difficultyLevel: Int!
-  instances: [SubjectInstance] @hasMany(indexName: "bySubject", fields: ["id"])
-  reports: [Report] @hasMany(indexName: "bySubject", fields: ["id"])
+  instances: [SubjectInstance]
+    @hasMany(indexName: "bySubjectForInstance", fields: ["id"])
+  reports: [Report] @hasMany(indexName: "bySubjectForReport", fields: ["id"])
+}
+
+type SubjectInstance @model @auth(rules: [{ allow: private }]) {
+  id: ID!
+  subjectId: ID!
+    @index(name: "bySubjectForInstance", sortKeyFields: ["startDate"])
+  startDate: AWSDate!
+  duration: Int!
+  lecturerId: ID!
+    @index(name: "byLecturerForSubjectInstance", sortKeyFields: ["subjectId"])
+  numberOfStudents: Int!
+  hasSupport: Boolean!
+  isCurrentlyDeveloping: Boolean!
+  subject: Subject @belongsTo(fields: ["subjectId"])
+  lecturer: Lecturer @belongsTo(fields: ["lecturerId"])
+  schedules: [Schedule] @hasMany(indexName: "bySubjectInstance", fields: ["id"])
+}
+
+type Schedule @model @auth(rules: [{ allow: private }]) {
+  id: ID!
+  lecturerId: ID!
+    @index(name: "byLecturerForSchedule", sortKeyFields: ["subjectInstanceId"])
+  subjectInstanceId: ID!
+    @index(name: "bySubjectInstance", sortKeyFields: ["lecturerId"])
+  status: String!
+  lecturer: Lecturer @belongsTo(fields: ["lecturerId"])
+  subjectInstance: SubjectInstance @belongsTo(fields: ["subjectInstanceId"])
 }
 
 type Availability @model @auth(rules: [{ allow: private }]) {
   id: ID!
-  lecturerId: ID! @index(name: "byLecturer", sortKeyFields: ["startDate"])
+  lecturerId: ID!
+    @index(name: "byLecturerForAvailability", sortKeyFields: ["startDate"])
   startDate: AWSDate!
   endDate: AWSDate!
   lecturer: Lecturer @belongsTo(fields: ["lecturerId"])
@@ -31,8 +61,10 @@ type Availability @model @auth(rules: [{ allow: private }]) {
 
 type Report @model @auth(rules: [{ allow: private }]) {
   id: ID!
-  lecturerId: ID! @index(name: "byLecturer", sortKeyFields: ["createdDate"])
-  subjectId: ID! @index(name: "bySubject", sortKeyFields: ["createdDate"])
+  lecturerId: ID!
+    @index(name: "byLecturerForReport", sortKeyFields: ["createdDate"])
+  subjectId: ID!
+    @index(name: "bySubjectForReport", sortKeyFields: ["createdDate"])
   createdDate: AWSDate!
   content: String!
   lecturer: Lecturer @belongsTo(fields: ["lecturerId"])
