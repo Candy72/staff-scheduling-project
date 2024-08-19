@@ -1,0 +1,12 @@
+{
+  "resourceName": "staffschedulingcontnet",
+  "policyUUID": "462fa888",
+  "bucketName": "staffschedulingcontent",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE"
+  ],
+  "triggerFunction": "S3Trigger3f74a4bb",
+  "groupAccess": {}
+}

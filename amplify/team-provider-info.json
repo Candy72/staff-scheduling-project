@@ -1,0 +1,29 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-staffscheduling-dev-885cb-authRole",
+      "UnauthRoleArn": "arn:aws:iam::523877572122:role/amplify-staffscheduling-dev-885cb-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::523877572122:role/amplify-staffscheduling-dev-885cb-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-staffscheduling-dev-885cb-deployment",
+      "UnauthRoleName": "amplify-staffscheduling-dev-885cb-unauthRole",
+      "StackName": "amplify-staffscheduling-dev-885cb",
+      "StackId": "arn:aws:cloudformation:us-east-1:523877572122:stack/amplify-staffscheduling-dev-885cb/e2413da0-5dcd-11ef-9b3a-121dc5740185",
+      "AmplifyAppId": "d2p2jkowhdmjw4"
+    },
+    "categories": {
+      "auth": {
+        "staffscheduling27f8839a": {}
+      },
+      "function": {
+        "S3Trigger3f74a4bb": {
+          "deploymentBucketName": "amplify-staffscheduling-dev-885cb-deployment",
+          "s3Key": "amplify-builds/S3Trigger3f74a4bb-532b4156763462574377-build.zip"
+        }
+      },
+      "storage": {
+        "staffschedulingcontnet": {}
+      }
+    }
+  }
+}

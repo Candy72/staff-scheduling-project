@@ -1,0 +1,141 @@
+/* src/styles/global.css */
+
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set default font and background for the entire app */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Global header styling */
+h1,
+h2,
+h3 {
+    color: #0056b3;
+    margin-bottom: 10px;
+}
+
+/* Global link styling */
+a {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Global button styling */
+button {
+    background-color: #0056b3;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #003f7f;
+}
+
+/* Global container style */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Global form input styling */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Specific section styles (optional) */
+.section-title {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.availability-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.description {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.availability-input {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.save-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.save-button:hover {
+    background-color: #0056b3;
+}
+
+.loading {
+    font-size: 18px;
+    color: #333;
+}
+
+.error {
+    color: red;
+    font-size: 16px;
+}
+
+/* src/styles/global.css */
+
+.logout-button {
+    background-color: #ff4d4d;
+    /* A different color for the logout button */
+}
+
+.logout-button:hover {
+    background-color: #e60000;
+    /* A darker shade for hover effect */
+}
