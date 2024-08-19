@@ -23,6 +23,9 @@
       },
       "storage": {
         "staffschedulingcontnet": {}
+      },
+      "api": {
+        "staffscheduling": {}
       }
     }
   }

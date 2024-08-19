@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { API, graphqlOperation } from 'aws-amplify';
-import { listReports } from '../graphql/queries'; // Assuming you have this GraphQL query for fetching reports
+import { API } from '@aws-amplify/api'; // Updated import for API
+import { graphqlOperation } from '@aws-amplify/api-graphql'; // Updated import for graphqlOperation
 import '../styles/global.css'; // Import global CSS
 
 const Reports = () => {

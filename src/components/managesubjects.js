@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { API, graphqlOperation } from 'aws-amplify';
-import { listSubjects, createSubject, updateSubject, deleteSubject } from '../graphql/queries'; // Assuming you have these GraphQL queries/mutations
+import { API } from '@aws-amplify/api'; // Updated import for API
+import { graphqlOperation } from '@aws-amplify/api-graphql'; // Updated import for graphqlOperation
 import '../styles/global.css'; // Import global CSS
+import { listSubjects } from '../graphql/queries';
+import { createSubject, updateSubject, deleteSubject } from '../graphql/mutations';
+
 
 const ManageSubjects = () => {
     const [subjects, setSubjects] = useState([]);

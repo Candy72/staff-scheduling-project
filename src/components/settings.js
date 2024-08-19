@@ -1,27 +1,27 @@
-import React, { useState } from 'react';
-import { Auth } from 'aws-amplify';
+import React, { useState, useEffect } from 'react';
+import { Auth } from '@aws-amplify/auth'; // Updated import for Auth
 import '../styles/global.css'; // Import global CSS
+
 
 const Settings = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [notificationPref, setNotificationPref] = useState(false);
 
-    // Fetch user information on component mount
-    React.useEffect(() => {
-        const fetchUserInfo = async () => {
-            try {
-                const user = await Auth.currentAuthenticatedUser();
-                setUsername(user.username);
-                setEmail(user.attributes.email);
-                // Fetch other settings from your backend or user attributes
-            } catch (error) {
-                console.log('Error fetching user info:', error);
-            }
-        };
-
+    useEffect(() => {
         fetchUserInfo();
     }, []);
+
+    const fetchUserInfo = async () => {
+        try {
+            const user = await Auth.currentAuthenticatedUser();
+            setUsername(user.username);
+            setEmail(user.attributes.email);
+            // Fetch other settings from your backend or user attributes
+        } catch (error) {
+            console.log('Error fetching user info:', error);
+        }
+    };
 
     const handleSaveSettings = async () => {
         try {

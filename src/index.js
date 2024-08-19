@@ -1,11 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client'; // Import from 'react-dom/client' instead of 'react-dom'
-import './styles/global.css';  // Import global CSS here
-import App from './App';
-import Amplify from 'aws-amplify';
+import ReactDOM from 'react-dom/client';
+import './styles/global.css';
+import { Amplify } from 'aws-amplify'; // Use named import for Amplify
 import awsExports from './aws-exports';
+import App from './App';
 
-Amplify.configure(awsExports);
+Amplify.configure(awsExports); // Configure Amplify with your AWS settings
 
 // Create a root element for rendering
 const root = ReactDOM.createRoot(document.getElementById('root'));

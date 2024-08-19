@@ -1,0 +1,12 @@
+{
+  "AppSyncApiName": "staffscheduling",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authstaffscheduling27f8839a",
+      "Outputs.UserPoolId"
+    ]
+  },
+  "AuthModeLastUpdated": "2024-08-19T07:12:18.670Z"
+}

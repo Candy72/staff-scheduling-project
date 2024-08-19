@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { Auth } from 'aws-amplify';
+import { useNavigate } from 'react-router-dom'; // Updated to use useNavigate instead of useHistory
+import { Auth } from '@aws-amplify/auth'; // Updated import for Auth
 import '../styles/global.css';  // Import global CSS
+
+
+
 
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null); // State to handle errors
-    const history = useHistory();
+    const navigate = useNavigate(); // Updated to use useNavigate instead of useHistory
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -15,7 +18,7 @@ const Login = () => {
             // Use AWS Amplify to sign in the user
             await Auth.signIn(username, password);
             // Redirect to the dashboard after successful login
-            history.push('/dashboard');
+            navigate('/dashboard');
         } catch (error) {
             // Handle error during sign-in
             setError(error.message);

@@ -1,17 +1,18 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { Auth } from 'aws-amplify';
-import '../styles/global.css';  // Import global CSS
+import { Link, useNavigate } from 'react-router-dom';
+import { Auth } from '@aws-amplify/auth'; // Updated import for Auth
+import '../styles/global.css'; // Import global CSS
+
 
 const Error = () => {
-    const history = useHistory();
+    const navigate = useNavigate(); // useNavigate replaces useHistory in react-router-dom v6+
 
     const handleBackToHome = async () => {
         try {
             const user = await Auth.currentAuthenticatedUser();
-            history.push('/dashboard');
+            navigate('/dashboard');
         } catch {
-            history.push('/');
+            navigate('/');
         }
     };
 

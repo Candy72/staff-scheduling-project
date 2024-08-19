@@ -1,0 +1,40 @@
+type Lecturer @model @auth(rules: [{ allow: private }]) {
+  id: ID!
+  name: String!
+  expertise: [String]!
+  isFullTime: Boolean!
+  currentWorkload: Int!
+  maxConcurrentInstances: Int!
+  assignedInstances: [SubjectInstance]
+    @hasMany(indexName: "byLecturer", fields: ["id"])
+  schedules: [Schedule] @hasMany(indexName: "byLecturer", fields: ["id"])
+  availabilities: [Availability]
+    @hasMany(indexName: "byLecturer", fields: ["id"])
+  reports: [Report] @hasMany(indexName: "byLecturer", fields: ["id"])
+}
+
+type Subject @model @auth(rules: [{ allow: private }]) {
+  id: ID!
+  name: String!
+  difficultyLevel: Int!
+  instances: [SubjectInstance] @hasMany(indexName: "bySubject", fields: ["id"])
+  reports: [Report] @hasMany(indexName: "bySubject", fields: ["id"])
+}
+
+type Availability @model @auth(rules: [{ allow: private }]) {
+  id: ID!
+  lecturerId: ID! @index(name: "byLecturer", sortKeyFields: ["startDate"])
+  startDate: AWSDate!
+  endDate: AWSDate!
+  lecturer: Lecturer @belongsTo(fields: ["lecturerId"])
+}
+
+type Report @model @auth(rules: [{ allow: private }]) {
+  id: ID!
+  lecturerId: ID! @index(name: "byLecturer", sortKeyFields: ["createdDate"])
+  subjectId: ID! @index(name: "bySubject", sortKeyFields: ["createdDate"])
+  createdDate: AWSDate!
+  content: String!
+  lecturer: Lecturer @belongsTo(fields: ["lecturerId"])
+  subject: Subject @belongsTo(fields: ["subjectId"])
+}

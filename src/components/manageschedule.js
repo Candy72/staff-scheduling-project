@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { API, graphqlOperation } from 'aws-amplify';
-import { listSchedules, createSchedule, updateSchedule, deleteSchedule } from '../graphql/queries'; // Assuming you have GraphQL queries set up for schedule management
+import { API } from '@aws-amplify/api'; // Updated import for API
+import { graphqlOperation } from '@aws-amplify/api-graphql'; // Updated import for graphqlOperation
 import '../styles/global.css'; // Import global CSS
+import { listSchedules } from '../graphql/queries';
+import { createSchedule, updateSchedule, deleteSchedule } from '../graphql/mutations';
+
 
 const ManageSchedule = () => {
     const [schedules, setSchedules] = useState([]);

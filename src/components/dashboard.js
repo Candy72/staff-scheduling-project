@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { Auth } from 'aws-amplify';
-import '../styles/global.css';  // Import global CSS
+import { Link, useNavigate } from 'react-router-dom';
+import { Auth } from '@aws-amplify/auth'; // Updated import for Auth
+import '../styles/global.css'; // Import global CSS
+
+
+
 
 const Dashboard = () => {
-    const history = useHistory();
+    const navigate = useNavigate(); // useNavigate replaces useHistory in react-router-dom v6+
 
     useEffect(() => {
         // Check if the user is authenticated
@@ -14,14 +17,14 @@ const Dashboard = () => {
             })
             .catch(() => {
                 // If not authenticated, redirect to the login page
-                history.push('/login');
+                navigate('/login');
             });
-    }, [history]);
+    }, [navigate]);
 
     const handleLogout = async () => {
         try {
             await Auth.signOut();
-            history.push('/login');
+            navigate('/login');
         } catch (error) {
             console.log('Error signing out: ', error);
         }

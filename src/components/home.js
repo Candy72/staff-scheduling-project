@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Auth } from 'aws-amplify';
-import '../styles/global.css';  // Import global CSS
+import { Auth } from '@aws-amplify/auth'; // Updated import for Auth
+import '../styles/global.css'; // Import global CSS
+
 
 const Home = () => {
     const [user, setUser] = useState(null);
