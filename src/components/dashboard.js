@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Auth } from 'aws-amplify';
-import { API } from '@aws-amplify/api';
-import { graphqlOperation } from '@aws-amplify/api-graphql';
+import React, { useEffect } from 'react';
+import { Auth } from '@aws-amplify';
+import { useNavigate, Link } from 'react-router-dom';
 import '../styles/global.css';
 
 const Dashboard = () => {

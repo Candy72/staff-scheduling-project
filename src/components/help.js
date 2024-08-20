@@ -5,22 +5,22 @@ const Help = () => {
     return (
         <div className="container help-container">
             <h1 className="title">Help & Support</h1>
-            <p className="description">If you have questions or need assistance, you're in the right place.</p>
+            <p className="description">If you have questions or need assistance, you&apos;re in the right place.</p>
             
             <section className="faq-section section">
                 <h2 className="section-title">Frequently Asked Questions (FAQs)</h2>
                 <ul className="faq-list">
                     <li className="faq-item">
                         <strong>How do I reset my password?</strong>
-                        <p>You can reset your password by clicking the "Forgot Password" link on the login page. Follow the instructions sent to your registered email.</p>
+                        <p>You can reset your password by clicking the &quot;Forgot Password&quot; link on the login page. Follow the instructions sent to your registered email.</p>
                     </li>
                     <li className="faq-item">
                         <strong>How do I update my availability?</strong>
-                        <p>To update your availability, go to the "Set Availability" page under your Dashboard and select the time slots you are available.</p>
+                        <p>To update your availability, go to the &quot;Set Availability&quot; page under your Dashboard and select the time slots you are available.</p>
                     </li>
                     <li className="faq-item">
                         <strong>How can I view my assigned schedules?</strong>
-                        <p>Your assigned schedules can be viewed in the "Manage Schedule" section under your Dashboard.</p>
+                        <p>Your assigned schedules can be viewed in the &quot;Manage Schedule&quot; section under your Dashboard.</p>
                     </li>
                 </ul>
             </section>

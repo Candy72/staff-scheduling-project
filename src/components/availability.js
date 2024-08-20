@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { API, graphqlOperation, Auth } from 'aws-amplify'; // Corrected import
+import { API, graphqlOperation, Auth } from 'aws-amplify'; // Import everything from 'aws-amplify'
 import '../styles/global.css'; // Import global CSS
 import { listAvailabilities } from '../graphql/queries';
-import { updateAvailability } from '../graphql/mutations'; // Updated to use mutations for updating availability
+import { updateAvailability } from '../graphql/mutations';
 
 const Availability = () => {
     const [availability, setAvailability] = useState('');

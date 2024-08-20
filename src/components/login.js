@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Updated to use useNavigate instead of useHistory
-import { Auth } from '@aws-amplify/auth'; // Updated import for Auth
+import { Auth } from 'aws-amplify';
 import '../styles/global.css';  // Import global CSS
-
-
-
 
 const Login = () => {
     const [username, setUsername] = useState('');

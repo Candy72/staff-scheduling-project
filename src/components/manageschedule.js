@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { API, graphqlOperation } from 'aws-amplify'; // Corrected import
-import '../styles/global.css'; // Import global CSS
+import { API, graphqlOperation } from 'aws-amplify'; // Correct import
+import '../styles/global.css';
 import { listSchedules } from '../graphql/queries';
 import { createSchedule, updateSchedule, deleteSchedule } from '../graphql/mutations';
 

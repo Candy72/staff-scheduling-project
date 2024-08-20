@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Auth, API, graphqlOperation } from 'aws-amplify'; // Corrected import
+import { API, graphqlOperation } from '@aws-amplify';
 import '../styles/global.css';
 import { listReports } from '../graphql/queries';
-import { createReport, updateReport, deleteReport } from '../graphql/mutations';
+
 
 const Reports = () => {
     const [reports, setReports] = useState([]);
@@ -17,7 +17,7 @@ const Reports = () => {
             const reportData = await API.graphql(graphqlOperation(listReports));
             setReports(reportData.data.listReports.items);
         } catch (error) {
-            console.log('Error fetching reports:', error);
+            console.error('Error fetching reports:', error);
         }
     };
 
@@ -35,7 +35,7 @@ const Reports = () => {
                 <ul>
                     {reports.map((report) => (
                         <li key={report.id} className="report-item" onClick={() => handleReportClick(report)}>
-                            {`${report.name} - ${report.date}`}
+                            {`${report.name} - ${report.createdDate}`}
                         </li>
                     ))}
                 </ul>
@@ -45,7 +45,7 @@ const Reports = () => {
                 <div className="report-details">
                     <h2 className="title">Report Details</h2>
                     <p><strong>Name:</strong> {selectedReport.name}</p>
-                    <p><strong>Date:</strong> {selectedReport.date}</p>
+                    <p><strong>Date:</strong> {selectedReport.createdDate}</p>
                     <p><strong>Description:</strong> {selectedReport.description}</p>
                     <p><strong>Data:</strong></p>
                     <pre>{JSON.stringify(selectedReport.data, null, 2)}</pre>

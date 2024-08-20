@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { API, graphqlOperation, Auth } from 'aws-amplify'; // Added Auth import
-import '../styles/global.css'; // Import global CSS
+import { API, graphqlOperation } from 'aws-amplify'; // Import from 'aws-amplify'
+import '../styles/global.css';
 import { listSubjects } from '../graphql/queries';
 import { createSubject, updateSubject, deleteSubject } from '../graphql/mutations';
-
 
 const ManageSubjects = () => {
     const [subjects, setSubjects] = useState([]);

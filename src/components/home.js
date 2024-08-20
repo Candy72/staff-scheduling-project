@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Auth } from '@aws-amplify/auth'; // Updated import for Auth
+import { Auth } from '@aws-amplify'; // Updated import for Auth
 import '../styles/global.css'; // Import global CSS
 
 
@@ -23,7 +23,7 @@ const Home = () => {
             
             <section className="overview section">
                 <h2 className="section-title">System Overview</h2>
-                <p className="description">The Staff Scheduling System is designed to help educational institutions manage their teaching staff and course schedules efficiently. Whether you’re an administrator managing multiple schedules or a lecturer looking to manage your availability, our system makes it easy and intuitive.</p>
+                <p className="description">The Staff Scheduling System is designed to help educational institutions manage their teaching staff and course schedules efficiently. Whether you&apos;re an administrator managing multiple schedules or a lecturer looking to manage your availability, our system makes it easy and intuitive.</p>
             </section>
             
             <section className="quick-links section">
@@ -63,7 +63,7 @@ const Home = () => {
             <section className="testimonials section">
                 <h2 className="section-title">What Our Users Say</h2>
                 <blockquote className="testimonial">
-                    <p>"The Staff Scheduling System has transformed the way we manage our teaching staff. It's intuitive and powerful!"</p>
+                    <p>&quot;The Staff Scheduling System has transformed the way we manage our teaching staff. It&apos;s intuitive and powerful!&quot;</p>
                     <footer className="testimonial-footer">- Dr. Jane Doe, University Administrator</footer>
                 </blockquote>
             </section>

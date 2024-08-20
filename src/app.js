@@ -12,10 +12,8 @@ import Reports from './components/Reports';
 import Settings from './components/Settings';
 import Help from './components/Help';
 import Error from './components/Error';
-import { Authenticator, withAuthenticator } from '@aws-amplify/ui-react';
-import './styles/global.css'; // Correct the path to your global CSS
+import '@aws-amplify/ui-react/styles.css';
 
-// Configure Amplify
 Amplify.configure(awsExports);
 
 function App() {
@@ -23,18 +21,18 @@ function App() {
         <Router>
             <Routes>
                 <Route exact path="/" element={<Home />} />
-                <Route path="/Login" element={<Login />} />
-                <Route path="/Dashboard" element={<Dashboard />} /> {/* Corrected typo */}
-                <Route path="/Manage-Schedule" element={<ManageSchedule />} />
-                <Route path="/Availability" element={<Availability />} />
-                <Route path="/Manage-Subjects" element={<ManageSubjects />} />
-                <Route path="/Reports" element={<Reports />} />
-                <Route path="/Settings" element={<Settings />} />
-                <Route path="/Help" element={<Help />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/manage-schedule" element={<ManageSchedule />} />
+                <Route path="/availability" element={<Availability />} />
+                <Route path="/manage-subjects" element={<ManageSubjects />} />
+                <Route path="/reports" element={<Reports />} />
+                <Route path="/settings" element={<Settings />} />
+                <Route path="/help" element={<Help />} />
                 <Route path="*" element={<Error />} />
             </Routes>
         </Router>
     );
 }
 
-export default withAuthenticator(App);  // Wrap with Authenticator if authentication is required
+export default App;
